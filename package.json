@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/piusidev/clean-react-app/issues"
   },
-  "homepage": "https://github.com/piusidev/clean-react-app#readme"
+  "homepage": "https://github.com/piusidev/clean-react-app#readme",
+  "devDependencies": {
+    "git-commit-msg-linter": "^4.1.3"
+  }
 }
