@@ -7,7 +7,8 @@ module.exports = {
   entry: path.resolve(__dirname, 'src/index.tsx'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'main.js'
+    filename: 'main.js',
+    clean: true
   },
   devServer: {
     static: path.join(__dirname, 'dist'),
@@ -38,7 +39,15 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.json']
+    extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.json'],
+    alias: {
+      components: path.resolve(__dirname, 'src/components/'),
+      services: path.resolve(__dirname, 'src/services/'),
+      styles: path.resolve(__dirname, 'src/styles/'),
+      config: path.resolve(__dirname, 'src/config/'),
+      hooks: path.resolve(__dirname, 'src/hooks/'),
+      utils: path.resolve(__dirname, 'src/utils/')
+    }
   },
   plugins: [
     new HtmlWebpackPlugin({
