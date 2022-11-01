@@ -1,3 +1,4 @@
+import GlobalProvider from 'hooks';
 import React from 'react';
 import {
   BrowserRouter as Router,
@@ -9,11 +10,13 @@ import Home from '../pages/Home';
 
 const Routes: React.FC = () => {
   return (
-    <Router>
-        <Switch>
-          <Route path="/" element={<Home />} />
-        </Switch>
-    </Router>
+    <GlobalProvider>
+      <Router>
+          <Switch>
+            <Route path="/" element={<Home />} />
+          </Switch>
+      </Router>
+    </GlobalProvider>
   );
 };
 

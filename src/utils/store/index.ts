@@ -1,40 +1,45 @@
 import config from 'config/general';
+import { IStore } from './types';
 
-const localStorageKey = config.localStorageKey;
+const Store = (key: string): IStore => {
+  const localStorageKey = `${config.localStorageKey}-${key}`;
 
-export const get = (key: string = localStorageKey): any => {
-  try {
-    const storage = JSON.parse(window.localStorage.getItem(key));
+  const get = (): any => {
+    try {
+      const storage = JSON.parse(window.localStorage.getItem(localStorageKey));
 
-    return storage;
-  } catch (err) {
-    throw new Error('Unable to get storage!', err);
-  }
+      return storage;
+    } catch (err) {
+      throw new Error('Unable to get storage!', err);
+    }
+  };
+
+  const set = (data: any): any => {
+    try {
+      const stringfiedStorage = JSON.stringify(data);
+
+      return window.localStorage.setItem(localStorageKey, stringfiedStorage);
+    } catch (err) {
+      throw new Error('Unable to set storage!', err);
+    }
+  };
+
+  const merge = (data: any): any => {
+    try {
+      const currentStorage = get();
+      const mergedStorage = { ...currentStorage, ...data };
+
+      return set(mergedStorage);
+    } catch (err) {
+      throw new Error('Unable to merge storage!', err);
+    }
+  };
+
+  return {
+    get,
+    set,
+    merge
+  };
 };
 
-export const set = (data: any, key: string = localStorageKey): any => {
-  try {
-    const stringfiedStorage = JSON.stringify(data);
-
-    return window.localStorage.setItem(key, stringfiedStorage);
-  } catch (err) {
-    throw new Error('Unable to set storage!', err);
-  }
-};
-
-export const merge = (data: any, key: string = localStorageKey): any => {
-  try {
-    const currentStorage = get(key);
-    const mergedStorage = { ...currentStorage, ...data };
-
-    return set(mergedStorage, key);
-  } catch (err) {
-    throw new Error('Unable to merge storage!', err);
-  }
-};
-
-export default {
-  get,
-  set,
-  merge
-};
+export default Store;
