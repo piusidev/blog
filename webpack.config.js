@@ -8,10 +8,12 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
+    publicPath: '/',
     clean: true
   },
   devServer: {
     static: path.join(__dirname, 'dist'),
+    historyApiFallback: true,
     compress: true,
     port: 3000
   },
@@ -46,7 +48,8 @@ module.exports = {
       styles: path.resolve(__dirname, 'src/styles/'),
       config: path.resolve(__dirname, 'src/config/'),
       hooks: path.resolve(__dirname, 'src/hooks/'),
-      utils: path.resolve(__dirname, 'src/utils/')
+      utils: path.resolve(__dirname, 'src/utils/'),
+      api: path.resolve(__dirname, 'src/api/')
     }
   },
   plugins: [

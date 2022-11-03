@@ -1,21 +1,30 @@
+import { routes } from 'config/routes';
 import GlobalProvider from 'hooks';
 import React from 'react';
 import {
-  BrowserRouter as Router,
-  Routes as Switch,
-  Route
+  Switch,
+  BrowserRouter
 } from 'react-router-dom';
-
-import Home from '../pages/Home';
+import CustomRoute from './CustomRoute';
 
 const Routes: React.FC = () => {
   return (
     <GlobalProvider>
-      <Router>
+      <BrowserRouter>
           <Switch>
-            <Route path="/" element={<Home />} />
+            {
+              routes.map((route, index) => (
+                <CustomRoute
+                  exact
+                  isPrivate={route.isPrivate}
+                  component={route.component}
+                  path={route.path}
+                  key={index}
+                />
+              ))
+            }
           </Switch>
-      </Router>
+      </BrowserRouter>
     </GlobalProvider>
   );
 };
