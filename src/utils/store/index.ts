@@ -35,10 +35,19 @@ const Store = (key: string): IStore => {
     }
   };
 
+  const clear = (): void => {
+    try {
+      return window.localStorage.removeItem(localStorageKey);
+    } catch (err) {
+      throw new Error('Unable to remove item from storage!', err);
+    }
+  };
+
   return {
     get,
     set,
-    merge
+    merge,
+    clear
   };
 };
 
