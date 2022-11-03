@@ -1,4 +1,11 @@
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState
+} from 'react';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 
 import Store from 'utils/store';
@@ -6,14 +13,14 @@ import themes from 'styles/themes';
 
 interface IUseThemeContextData {
   theme: DefaultTheme
-  toggleTheme: () => void
+  toggleTheme: (arg: PossibleThemes) => void
 }
 
 interface IUseThemeProviderProps {
   children: React.ReactNode
 }
 
-type PossibleThemeTitles = 'dark' | 'light';
+type PossibleThemes = 'dark' | 'light';
 
 const themeStore = Store('theme');
 
@@ -22,13 +29,17 @@ const UseThemeContext = createContext<IUseThemeContextData>(null);
 const UseThemeProvider: React.FC<IUseThemeProviderProps> = ({ children }) => {
   const [theme, setTheme] = useState<DefaultTheme>(themes.dark);
 
-  const toggleTheme = useCallback((): void => {
+  const toggleTheme = useCallback((newTheme?: PossibleThemes): void => {
+    if (newTheme) {
+      return setTheme(themes[newTheme]);
+    }
+
     setTheme(theme.title === 'dark' ? themes.light : themes.dark);
   }, []);
 
   useEffect(() => {
-    const storedTheme: PossibleThemeTitles = themeStore.get();
-    const themeList = Object.entries(themes).map(([index, _item]) => index);
+    const storedTheme: PossibleThemes = themeStore.get();
+    const themeList = Object.entries(themes).map(([_index, item]) => item.title);
 
     if (themeList.includes(storedTheme)) {
       setTheme(themes[storedTheme]);
