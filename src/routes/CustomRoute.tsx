@@ -2,11 +2,11 @@ import React, { ReactElement } from 'react';
 import { useAuth } from 'hooks/useAuth';
 import { RouteProps, Redirect, Route } from 'react-router-dom';
 
-interface ICustomRouteProps {
+interface ICustomRouteProps extends RouteProps {
   isPrivate: Boolean
 }
 
-const CustomRoute: React.FC<ICustomRouteProps & RouteProps> = ({ isPrivate, ...rest }): ReactElement => {
+const CustomRoute: React.FC<ICustomRouteProps> = ({ isPrivate, ...rest }): ReactElement => {
   const { loading, authenticated } = useAuth();
 
   if (loading) {

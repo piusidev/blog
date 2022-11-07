@@ -4,10 +4,10 @@ interface IAuthenticateResponse {
   }
 }
 
-export const authenticate = async (): Promise<IAuthenticateResponse> => {
-  return await new Promise((resolve, _reject) => {
-    setTimeout(() => {
-      resolve({ data: { token: '123' } });
-    }, 2000);
-  });
-};
+export const authenticate = async (): Promise<IAuthenticateResponse> => new Promise((resolve) => {
+  setTimeout(() => {
+    resolve({ data: { token: '123' } });
+  }, 2000);
+});
+
+export const oi = '';

@@ -3,16 +3,15 @@ import GlobalProvider from 'hooks';
 import React from 'react';
 import {
   Switch,
-  BrowserRouter
+  BrowserRouter,
 } from 'react-router-dom';
 import CustomRoute from './CustomRoute';
 
-const Routes: React.FC = () => {
-  return (
-    <GlobalProvider>
-      <BrowserRouter>
-          <Switch>
-            {
+const Routes: React.FC = () => (
+  <GlobalProvider>
+    <BrowserRouter>
+      <Switch>
+        {
               routes.map((route, index) => (
                 <CustomRoute
                   exact
@@ -23,10 +22,9 @@ const Routes: React.FC = () => {
                 />
               ))
             }
-          </Switch>
-      </BrowserRouter>
-    </GlobalProvider>
-  );
-};
+      </Switch>
+    </BrowserRouter>
+  </GlobalProvider>
+);
 
 export default Routes;

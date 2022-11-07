@@ -12,16 +12,16 @@ export const routes: IRoutes[] = [
   {
     path: '/',
     component: Home,
-    isPrivate: true
+    isPrivate: true,
   },
   {
     path: '/login',
     component: Auth,
-    isPrivate: false
-  }
+    isPrivate: false,
+  },
 ];
 
 export const routesMap = {
   home: '/',
-  login: '/login'
+  login: '/login',
 };

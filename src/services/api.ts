@@ -1,4 +1,4 @@
-import { axiosClient } from './axios-config';
+import axiosClient from './axios-config';
 
 const api = axiosClient();
 

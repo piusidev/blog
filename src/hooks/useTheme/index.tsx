@@ -4,7 +4,7 @@ import React, {
   useContext,
   useEffect,
   useMemo,
-  useState
+  useState,
 } from 'react';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 
@@ -34,12 +34,12 @@ const UseThemeProvider: React.FC<IUseThemeProviderProps> = ({ children }) => {
       return setTheme(themes[newTheme]);
     }
 
-    setTheme(theme.title === 'dark' ? themes.light : themes.dark);
+    return setTheme(theme.title === 'dark' ? themes.light : themes.dark);
   }, []);
 
   useEffect(() => {
     const storedTheme: PossibleThemes = themeStore.get();
-    const themeList = Object.entries(themes).map(([_index, item]) => item.title);
+    const themeList = Object.values(themes).map((item) => item.title);
 
     if (themeList.includes(storedTheme)) {
       setTheme(themes[storedTheme]);
@@ -54,7 +54,7 @@ const UseThemeProvider: React.FC<IUseThemeProviderProps> = ({ children }) => {
 
   return (
     <UseThemeContext.Provider value={contextValue}>
-      <ThemeProvider theme={theme} >{children}</ThemeProvider>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </UseThemeContext.Provider>
   );
 };

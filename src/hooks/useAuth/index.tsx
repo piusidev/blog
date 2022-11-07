@@ -3,7 +3,7 @@ import React, {
   useEffect,
   createContext,
   useContext,
-  useMemo
+  useMemo,
 } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -11,8 +11,8 @@ import { authenticate } from 'api/auth';
 import api from 'services/api';
 import Store from 'utils/store';
 
-import { IUseAuthContextData, IUseAuthProviderProps } from './types';
 import { routesMap } from 'config/routes';
+import { IUseAuthContextData, IUseAuthProviderProps } from './types';
 
 const authStore = Store('auth');
 
@@ -60,7 +60,7 @@ const UseAuthProvider: React.FC<IUseAuthProviderProps> = ({ children }) => {
     authenticated,
     loading,
     handleLogin,
-    handleLogout
+    handleLogout,
   }), [authenticated, loading, handleLogin, handleLogout]);
 
   return (

@@ -47,7 +47,7 @@ const Store = (key: string): IStore => {
     get,
     set,
     merge,
-    clear
+    clear,
   };
 };
 
