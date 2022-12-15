@@ -11,7 +11,7 @@ import { authenticate } from 'api/auth';
 import api from 'services/api';
 import Store from 'utils/store';
 
-import { routesMap } from 'config/routes';
+import routes from 'config/routes';
 import { IUseAuthContextData, IUseAuthProviderProps } from './types';
 
 const authStore = Store('auth');
@@ -44,7 +44,7 @@ const UseAuthProvider: React.FC<IUseAuthProviderProps> = ({ children }) => {
     api.defaults.headers.Authorization = `Bearer ${token}`;
     setAuthenticated(true);
 
-    history.push(routesMap.home);
+    history.push(routes.home.path);
   };
 
   const handleLogout = (): void => {
@@ -53,7 +53,7 @@ const UseAuthProvider: React.FC<IUseAuthProviderProps> = ({ children }) => {
     api.defaults.headers.Authorization = undefined;
     setAuthenticated(false);
 
-    history.push(routesMap.login);
+    history.push(routes.login.path);
   };
 
   const contextValue = useMemo(() => ({
