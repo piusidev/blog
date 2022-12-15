@@ -1,30 +1,29 @@
-import { routes } from 'config/routes';
+import routes from 'config/routes';
 import GlobalProvider from 'hooks';
 import React from 'react';
 import {
-  Switch,
+  Route,
+  Routes as Switch,
   BrowserRouter,
 } from 'react-router-dom';
-import CustomRoute from './CustomRoute';
+import ProtectedRoute from './ProtectedRoute';
 
 const Routes: React.FC = () => (
-  <GlobalProvider>
-    <BrowserRouter>
+  <BrowserRouter>
+    <GlobalProvider>
       <Switch>
         {
-              routes.map((route, index) => (
-                <CustomRoute
-                  exact
-                  isPrivate={route.isPrivate}
-                  component={route.component}
-                  path={route.path}
-                  key={index}
-                />
-              ))
-            }
+          Object.entries(routes).map(([key, route]) => (
+            <Route
+              key={key}
+              path={route.path}
+              element={<ProtectedRoute isPrivate={route.isPrivate} outlet={route.component} />}
+            />
+          ))
+        }
       </Switch>
-    </BrowserRouter>
-  </GlobalProvider>
+    </GlobalProvider>
+  </BrowserRouter>
 );
 
 export default Routes;

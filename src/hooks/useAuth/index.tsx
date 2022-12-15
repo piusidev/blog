@@ -5,7 +5,7 @@ import React, {
   useContext,
   useMemo,
 } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { authenticate } from 'api/auth';
 import api from 'services/api';
@@ -22,7 +22,7 @@ const UseAuthProvider: React.FC<IUseAuthProviderProps> = ({ children }) => {
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token: string = authStore.get();
@@ -44,7 +44,7 @@ const UseAuthProvider: React.FC<IUseAuthProviderProps> = ({ children }) => {
     api.defaults.headers.Authorization = `Bearer ${token}`;
     setAuthenticated(true);
 
-    history.push(routes.home.path);
+    navigate(routes.home.path);
   };
 
   const handleLogout = (): void => {
@@ -53,7 +53,7 @@ const UseAuthProvider: React.FC<IUseAuthProviderProps> = ({ children }) => {
     api.defaults.headers.Authorization = undefined;
     setAuthenticated(false);
 
-    history.push(routes.login.path);
+    navigate(routes.login.path);
   };
 
   const contextValue = useMemo(() => ({

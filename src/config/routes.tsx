@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import Auth from '../pages/Auth';
 import Home from '../pages/Home';
 
 interface IRoutes {
   [key: string]: {
     path: string
-    component: React.FC
+    component: ReactElement
     isPrivate: Boolean
   }
 }
@@ -13,12 +13,12 @@ interface IRoutes {
 const routes: IRoutes = {
   home: {
     path: '/',
-    component: Home,
+    component: <Home />,
     isPrivate: true,
   },
   login: {
     path: '/login',
-    component: Auth,
+    component: <Auth />,
     isPrivate: false,
   },
 };
