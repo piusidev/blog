@@ -4,6 +4,7 @@ import React, {
   createContext,
   useContext,
   useMemo,
+  useCallback,
 } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -36,7 +37,7 @@ const UseAuthProvider: React.FC<IUseAuthProviderProps> = ({ children }) => {
     setLoading(false);
   }, []);
 
-  const handleLogin = async (): Promise<void> => {
+  const handleLogin = useCallback(async (): Promise<void> => {
     const { data: { token } } = await authenticate();
 
     authStore.set(token);
@@ -45,16 +46,16 @@ const UseAuthProvider: React.FC<IUseAuthProviderProps> = ({ children }) => {
     setAuthenticated(true);
 
     navigate(routes.home.path);
-  };
+  }, [navigate]);
 
-  const handleLogout = (): void => {
+  const handleLogout = useCallback((): void => {
     authStore.clear();
 
     api.defaults.headers.Authorization = undefined;
     setAuthenticated(false);
 
-    navigate(routes.login.path);
-  };
+    navigate(routes.home.path);
+  }, [navigate]);
 
   const contextValue = useMemo(() => ({
     authenticated,

@@ -1,6 +1,7 @@
 import React from 'react';
-import { UseAuthProvider } from './useAuth';
 
+import { GlobalStyle } from 'styles';
+import { UseAuthProvider } from './useAuth';
 import { UseThemeProvider } from './useTheme';
 
 interface IGlobalProviderProps {
@@ -10,6 +11,7 @@ interface IGlobalProviderProps {
 const GlobalProvider: React.FC<IGlobalProviderProps> = ({ children }) => (
   <UseThemeProvider>
     <UseAuthProvider>
+      <GlobalStyle />
       {children}
     </UseAuthProvider>
   </UseThemeProvider>
