@@ -1,4 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+interface IItemProps {
+  isClickable?: boolean
+}
 
 export const Container = styled.div`
   position: relative;
@@ -7,14 +11,14 @@ export const Container = styled.div`
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
-    transition: 150ms ease;
+    transition: ${({ theme }) => theme.transition};
   }
 
   .inactive {
     opacity: 0;
     visibility: hidden;
     transform: translateY(-20px);
-    transition: 150ms ease;
+    transition: ${({ theme }) => theme.transition};
   }
 `;
 
@@ -29,7 +33,7 @@ export const Button = styled.button`
 
   cursor: pointer;
 
-  transition: all 150ms ease-in-out;
+  transition: all ${({ theme }) => theme.transition};
 
   &:hover {
     opacity: 0.8;
@@ -44,22 +48,63 @@ export const Items = styled.div`
   top: 3rem;
   right: 0;
 
+  z-index: 100;
+
   border-radius: 0.5rem;
 
-  padding: 1rem;
   margin-top: 0.5rem;
 
   background: ${({ theme }) => theme.accent.color};
-  box-shadow: rgb(255 255 255 / 5%) 0px 0px 0px 1px inset,
-              rgb(0 0 0 / 4%) 0px 2px 8px,
-              rgb(0 0 0 / 5%) 0px 30px 70px;
+  box-shadow: ${({ theme }) => theme.boxShadow};
+
+  .info {
+    font-size: 0.7rem;
+
+    color: ${({ theme }) => theme.text.opacify(0.7)};
+  }
 `;
 
-export const Item = styled.div`
-  cursor: pointer;
+export const Item = styled.div<IItemProps>`
   padding: 1rem;
 
-  &:hover {
-    opacity: 0.5;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  font-size: 1rem;
+
+  svg {
+    width: 1rem;
   }
+
+  transition: ${({ theme }) => theme.transition};
+
+  a {
+    transition: ${({ theme }) => theme.transition};
+
+    &:hover {
+      opacity: 0.3;
+    }
+  }
+
+  ${({ isClickable }) => {
+    if (isClickable) {
+      return css`
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.3;
+        }
+      `;
+    }
+
+    return false;
+  }}
+`;
+
+export const Divider = styled.div`
+  width: 100%;
+  height: 1px;
+
+  background-color: ${({ theme }) => theme.text.opacify(0.1)};
 `;

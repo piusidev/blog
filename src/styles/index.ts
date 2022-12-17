@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background: ${({ theme }) => theme.background.color};
     color: ${({ theme }) => theme.text.color};
-    transition: background 0.3s ease-in-out;
+    transition: background ${({ theme }) => theme.transition};;
 
     font-family: 'Inter', sans-serif;
   }

@@ -1,7 +1,11 @@
-import { rgba } from 'polished';
 import { DefaultTheme } from 'styled-components';
+import { rgba } from 'polished';
+
+import { common } from './common';
 
 const dark: DefaultTheme = {
+  ...common,
+
   title: 'dark',
 
   text: {

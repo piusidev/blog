@@ -1,28 +1,21 @@
+import { useAuth } from 'hooks/useAuth';
 import React, { useEffect, useRef, useState } from 'react';
 
-import { MoreVertical } from 'react-feather';
+import {
+  MoreVertical, Settings, Info, LogIn, LogOut,
+} from 'react-feather';
+import ThemeSwitcher from '../ThemeSwitcher';
 
 import {
-  Container, Button, Items, Item,
+  Container, Button, Items, Item, Divider,
 } from './styles';
 
-interface IMenuProps {
-  buttonName?: string;
-  Icon?: React.FC;
-  isIcon?: boolean;
-  children: ReactChildren
-}
-
-interface IMenuItemProps {
-  children: ReactChildren
-}
-
-export const Menu: React.FC<IMenuProps> = ({
-  buttonName, isIcon = false, Icon = MoreVertical, children,
-}) => {
+export const Menu: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const ref = useRef(null);
+
+  const { authenticated } = useAuth();
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -39,18 +32,49 @@ export const Menu: React.FC<IMenuProps> = ({
   return (
     <Container ref={ref}>
       <Button onClick={() => setIsOpen(!isOpen)}>
-        {!buttonName || isIcon ? <Icon /> : buttonName}
+        <MoreVertical />
       </Button>
 
       <Items className={`dropdown-menu ${isOpen ? 'active' : 'inactive'}`}>
-        {children}
+        <Item>
+          <ThemeSwitcher />
+        </Item>
+
+        <Divider />
+
+        <Item isClickable onClick={() => {}}>
+          <Settings />
+          Settings
+        </Item>
+
+        <Item isClickable onClick={() => {}}>
+          <Info />
+          About
+        </Item>
+
+        <Item isClickable onClick={() => {}}>
+          {
+            authenticated ? (
+              <>
+                <LogOut />
+                Logout
+              </>
+            ) : (
+              <>
+                <LogIn />
+                Login
+              </>
+            )
+          }
+        </Item>
+
+        <Divider />
+
+        <Item className="info">
+          {`©  ${new Date().getFullYear()} -`}
+          <a href="https://github.com/piusidev">Follow me on Github</a>
+        </Item>
       </Items>
     </Container>
   );
 };
-
-export const MenuItem: React.FC<IMenuItemProps> = ({ children }) => (
-  <Item>
-    {children}
-  </Item>
-);

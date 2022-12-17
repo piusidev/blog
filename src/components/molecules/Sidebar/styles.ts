@@ -8,10 +8,12 @@ export const Sidebar = styled.section`
   background: ${({ theme }) => theme.accent.color};
 
   padding: 3rem;
-  border-radius: 1rem;
+  border-radius: 1.5rem;
 
   .item-active {
     background-color: ${({ theme }) => theme.text.opacify(0.1)};
+
+    box-shadow: ${({ theme }) => theme.boxShadow};
   }
 `;
 
@@ -25,13 +27,15 @@ export const Item = styled.div`
 
   padding: 0.7rem;
   margin-bottom: 0.2rem;
-  border-radius: 0.5rem;
+  border-radius: 0.7rem;
 
   cursor: pointer;
-  transition: background-color 0.15s ease 0s;
+  transition: background-color ${({ theme }) => theme.transition};;
 
   &:hover {
     background-color: ${({ theme }) => theme.text.opacify(0.1)};
+
+    box-shadow: ${({ theme }) => theme.boxShadow};
   }
 
   svg {
@@ -44,8 +48,11 @@ export const Item = styled.div`
 
   span {
     width: 1.5rem;
+    height: 1.5rem;
 
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     border-radius: 0.3rem;
     margin-left: auto;

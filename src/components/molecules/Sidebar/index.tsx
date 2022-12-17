@@ -15,8 +15,8 @@ const Component: React.FC = () => {
           const isActive = location.pathname === item.path;
 
           return (
-            <Link to={item.path}>
-              <Item key={index} className={`${isActive && 'item-active'}`}>
+            <Link to={item.path} key={index}>
+              <Item className={`${isActive && 'item-active'}`}>
                 {item.icon}
 
                 <p>{item.title}</p>

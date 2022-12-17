@@ -12,5 +12,8 @@ declare module 'styled-components' {
     text: IColor
     background: IColor
     accent: IColor
+
+    boxShadow: string;
+    transition: string;
   }
 }
