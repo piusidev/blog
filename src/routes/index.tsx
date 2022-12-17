@@ -1,3 +1,4 @@
+import Template from 'components/templates/Default';
 import routes from 'config/routes';
 import GlobalProvider from 'hooks';
 import React from 'react';
@@ -11,8 +12,9 @@ import ProtectedRoute from './ProtectedRoute';
 const Routes: React.FC = () => (
   <BrowserRouter>
     <GlobalProvider>
-      <Switch>
-        {
+      <Template>
+        <Switch>
+          {
           Object.entries(routes).map(([key, route]) => (
             <Route
               key={key}
@@ -21,7 +23,9 @@ const Routes: React.FC = () => (
             />
           ))
         }
-      </Switch>
+        </Switch>
+
+      </Template>
     </GlobalProvider>
   </BrowserRouter>
 );

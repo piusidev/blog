@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import { useAuth } from 'hooks/useAuth';
 import { Navigate } from 'react-router-dom';
+import routes from 'config/routes';
 
 interface ICustomRouteProps {
   isPrivate: Boolean,
@@ -15,7 +16,7 @@ const ProtectedRoute: React.FC<ICustomRouteProps> = ({ isPrivate, outlet }): Rea
   }
 
   if (isPrivate && !authenticated) {
-    return <Navigate to="/login" />;
+    return <Navigate to={routes.home.path} />;
   }
 
   return outlet;

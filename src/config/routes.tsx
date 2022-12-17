@@ -1,24 +1,35 @@
-import React, { ReactElement } from 'react';
-import Auth from '../pages/Auth';
-import Home from '../pages/Home';
+import React from 'react';
 
-interface IRoutes {
-  [key: string]: {
+import { Home, Projects, Stars } from 'pages';
+
+enum RouteTypes {
+  home = 'home',
+  projects = 'projects',
+  stars = 'stars',
+}
+
+type IRoutes = {
+  [key in RouteTypes]: {
     path: string
-    component: ReactElement
+    component: React.ReactElement
     isPrivate: Boolean
   }
-}
+};
 
 const routes: IRoutes = {
   home: {
     path: '/',
     component: <Home />,
-    isPrivate: true,
+    isPrivate: false,
   },
-  login: {
-    path: '/login',
-    component: <Auth />,
+  projects: {
+    path: '/projects',
+    component: <Projects />,
+    isPrivate: false,
+  },
+  stars: {
+    path: '/stars',
+    component: <Stars />,
     isPrivate: false,
   },
 };
