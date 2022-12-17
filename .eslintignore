@@ -1,2 +1,4 @@
 node_modules
 coverage
+webpack.config.js
+jest.config.js
