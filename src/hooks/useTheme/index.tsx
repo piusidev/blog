@@ -35,7 +35,7 @@ const UseThemeProvider: React.FC<IUseThemeProviderProps> = ({ children }) => {
     }
 
     return setTheme(theme.title === 'dark' ? themes.light : themes.dark);
-  }, []);
+  }, [theme.title]);
 
   useEffect(() => {
     const storedTheme: PossibleThemes = themeStore.get();
