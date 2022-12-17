@@ -29,6 +29,7 @@
         "react/jsx-uses-react": "off",
         "react/jsx-props-no-spreading": "off",
         "react/no-unescaped-entities": "off",
+        "react/require-default-props": "off",
         "react/no-array-index-key": "off",
         "react/function-component-definition": "off",
         "space-before-function-paren": "off",

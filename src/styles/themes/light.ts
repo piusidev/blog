@@ -2,9 +2,21 @@ import { DefaultTheme } from 'styled-components';
 
 const light: DefaultTheme = {
   title: 'light',
-  text: '#27272b',
-  background: '#eceeef',
-  accent: '#ffffff',
+
+  text: {
+    color: '#27272b',
+    contrast: '#27272b',
+  },
+
+  background: {
+    color: '#eceeef',
+    contrast: '#eceeef',
+  },
+
+  accent: {
+    color: '#ffffff',
+    contrast: '#ffffff',
+  },
 };
 
 export default light;

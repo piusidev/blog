@@ -1,10 +1,24 @@
+import { rgba } from 'polished';
 import { DefaultTheme } from 'styled-components';
 
 const dark: DefaultTheme = {
   title: 'dark',
-  text: '#ffffff',
-  background: '#232529',
-  accent: '#2a2e37',
+
+  text: {
+    color: '#ffffff',
+    contrast: '#27272b',
+    opacify: (percent) => rgba('#ffffff', percent),
+  },
+
+  background: {
+    color: '#232529',
+    contrast: '#232529',
+  },
+
+  accent: {
+    color: '#2a2e37',
+    contrast: rgba('#2a2e37', 0.05),
+  },
 };
 
 export default dark;
