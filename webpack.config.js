@@ -32,7 +32,7 @@ module.exports = {
         use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]
       },
       {
-        test: /\.(png|jpe?g|gif|woff|woff2|eot|ttf|otf)$/i,
+        test: /\.(png|jpe?g|svg|gif|woff|woff2|eot|ttf|otf)$/i,
         loader: 'file-loader',
         options: {
           name: '[path][name].[ext]'
@@ -45,6 +45,7 @@ module.exports = {
     alias: {
       components: path.resolve(__dirname, 'src/components/'),
       services: path.resolve(__dirname, 'src/services/'),
+      assets: path.resolve(__dirname, 'src/assets/'),
       styles: path.resolve(__dirname, 'src/styles/'),
       config: path.resolve(__dirname, 'src/config/'),
       hooks: path.resolve(__dirname, 'src/hooks/'),
