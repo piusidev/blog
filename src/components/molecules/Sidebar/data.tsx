@@ -1,5 +1,7 @@
 import React from 'react';
-import { Home, Code, Star } from 'react-feather';
+import {
+  Home, Code, Star, Feather,
+} from 'react-feather';
 
 interface ISidebarItems {
   icon: React.ReactElement
@@ -14,6 +16,12 @@ export const items: ISidebarItems[] = [
     path: '/',
     icon: <Home />,
     total: 15,
+  },
+  {
+    title: 'Posts',
+    path: '/posts',
+    icon: <Feather />,
+    total: 5,
   },
   {
     title: 'Projects',

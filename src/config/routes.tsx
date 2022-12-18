@@ -1,11 +1,14 @@
 import React from 'react';
 
-import { Home, Projects, Stars } from 'pages';
+import {
+  Home, Projects, Stars, Posts,
+} from 'pages';
 
 enum RouteTypes {
   home = 'home',
   projects = 'projects',
   stars = 'stars',
+  posts = 'posts',
 }
 
 type IRoutes = {
@@ -25,6 +28,11 @@ const routes: IRoutes = {
   projects: {
     path: '/projects',
     component: <Projects />,
+    isPrivate: false,
+  },
+  posts: {
+    path: '/posts',
+    component: <Posts />,
     isPrivate: false,
   },
   stars: {
