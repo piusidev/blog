@@ -1,15 +1,15 @@
 import axios, { AxiosInstance } from 'axios';
 
-const axiosClient = (): AxiosInstance => {
-  const baseURL = process.env.BONFIRE_SERVER_ENDPOINT;
+const baseURL = process.env.GITHUB_API;
+
+const headers = {
+  'Content-Type': 'application/json',
+};
+
+export const axiosClient = (): AxiosInstance => {
   const api = axios.create({
     baseURL,
-    headers: {
-      'access-control-allow-origin': '*',
-      'access-control-allow-methods': '*',
-      'access-control-allow-headers': '*',
-      'Content-Type': 'application/json',
-    },
+    headers,
   });
 
   api.interceptors.response.use();
@@ -17,4 +17,16 @@ const axiosClient = (): AxiosInstance => {
   return api;
 };
 
-export default axiosClient;
+export const axiosInternalClient = (): AxiosInstance => {
+  const api = axios.create({
+    baseURL,
+    headers: {
+      ...headers,
+      Authorization: `Bearer ${process.env.GITHUB_API_KEY}`,
+    },
+  });
+
+  api.interceptors.response.use();
+
+  return api;
+};

@@ -9,7 +9,7 @@ import React, {
 import { useNavigate } from 'react-router-dom';
 
 import { authenticate } from 'api/auth';
-import api from 'services/api';
+import { api } from 'services/api';
 import Store from 'utils/store';
 
 import routes from 'config/routes';
