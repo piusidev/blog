@@ -21,7 +21,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    height: 100%;
+    overflow-x: hidden;
 
     background: ${({ theme }) => theme.background.color};
     color: ${({ theme }) => theme.text.color};
