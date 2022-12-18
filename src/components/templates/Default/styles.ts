@@ -7,7 +7,7 @@ export const Container = styled.div`
   background: ${({ theme }) => theme.background.color};
 
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
 
   padding: 1rem;
 `;

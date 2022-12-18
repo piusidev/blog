@@ -9,5 +9,3 @@ export const authenticate = async (): Promise<IAuthenticateResponse> => new Prom
     resolve({ data: { token: '123' } });
   }, 2000);
 });
-
-export const oi = '';

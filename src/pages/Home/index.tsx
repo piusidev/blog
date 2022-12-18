@@ -1,5 +1,8 @@
+import Welcome from 'components/atoms/Welcome';
 import React from 'react';
 
 export const Home: React.FC = () => (
-  <h1>Home.</h1>
+  <div>
+    <Welcome />
+  </div>
 );
