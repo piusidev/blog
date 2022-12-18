@@ -1,9 +1,22 @@
 import { lighten, rgba } from 'polished';
 import styled from 'styled-components';
 
-export const Sidebar = styled.section`
+export const Container = styled.section`
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  height: 100%;
   width: 100%;
   max-width: 400px;
+
+  padding: 1rem;
+`;
+
+export const Sidebar = styled.div`
+  height: 100%;
+  width: 100%;
 
   background: ${({ theme }) => theme.accent.color};
 

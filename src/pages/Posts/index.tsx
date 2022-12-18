@@ -1,20 +1,11 @@
-import { listGists } from 'api/posts/list';
-import React, { useEffect } from 'react';
+import React from 'react';
 
-export const Posts: React.FC = () => {
-  useEffect(() => {
-    const fetch = async () => {
-      const data = await listGists(1);
+import List from 'components/organisms/Posts';
+import { Title } from 'components/atoms/Title';
 
-      console.log(data);
-    };
-
-    fetch();
-  }, []);
-
-  return (
-    <div>
-      <h1>Posts.</h1>
-    </div>
-  );
-};
+export const Posts: React.FC = () => (
+  <div>
+    <Title title="Posts" />
+    <List />
+  </div>
+);

@@ -1,6 +1,6 @@
-import { IGistData } from '..';
+import { IPostData } from '..';
 
-export const middleware = (data: IGistData[]) => {
+export const middleware = (data: IPostData[]) => {
   const posts = data.filter((i) => i.description.includes('blog-post'));
 
   const parsedData = posts.map((post) => {

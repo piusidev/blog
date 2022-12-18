@@ -1,17 +1,12 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-
-  overflow: hidden;
+  overflow-x: hidden;
 
   background: ${({ theme }) => theme.background.color};
 
   display: flex;
-  gap: 2rem;
-
-  padding: 1rem;
+  padding: 2rem;
 `;
 
 export const Header = styled.header`
@@ -24,4 +19,6 @@ export const Header = styled.header`
 export const Section = styled.section`
   width: 100%;
   height: 100%;
+
+  padding-left: 400px;
 `;

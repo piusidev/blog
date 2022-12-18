@@ -1,8 +1,8 @@
 import { internalApi } from 'services/api';
-import { IGistData } from '..';
+import { IPostData } from '..';
 import { middleware } from './middleware';
 
-export const listGists = async (page: number): Promise<IGistData[]> => {
+export const listPosts = async (page: number): Promise<IPostData[]> => {
   internalApi.defaults.headers.Accept = 'application/vnd.github+json';
 
   const response = await internalApi.get('/gists', {

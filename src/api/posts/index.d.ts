@@ -1,4 +1,4 @@
-export interface IGistData {
+export interface IPostData {
   id: string;
   public: Boolean;
   created_at: string;
