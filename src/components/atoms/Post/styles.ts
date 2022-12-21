@@ -12,6 +12,14 @@ export const Card = styled.div`
   padding: 2rem;
   border-radius: 1rem;
 
+  cursor: pointer;
+
+  transition: all ${({ theme }) => theme.transition};
+
+  &:hover {
+    box-shadow: ${({ theme }) => theme.boxShadow};
+  }
+
   p {
     font-size: 0.8rem;
   }
