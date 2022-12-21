@@ -1,8 +1,8 @@
 import { internalApi } from 'services/api';
-import { IPostData } from '..';
+import { IResumedPost } from 'types/post';
 import { middleware } from './middleware';
 
-export const listPosts = async (page: number): Promise<IPostData[]> => {
+export const listPosts = async (page: number): Promise<IResumedPost[]> => {
   internalApi.defaults.headers.Accept = 'application/vnd.github+json';
 
   const response = await internalApi.get('/gists', {

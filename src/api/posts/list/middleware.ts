@@ -1,15 +1,16 @@
-import { IPostData } from '..';
+import { IResumedPost } from 'types/post';
+import { getPostData, getPostFile } from 'utils/post';
 
-export const middleware = (data: IPostData[]) => {
+export const middleware = (data: IResumedPost[]) => {
   const posts = data.filter((i) => i.description.includes('blog-post'));
 
   const parsedData = posts.map((post) => {
-    const description = post.description.split(/\s\|\s/gm).slice(1);
-    const title = description[0] || '';
-    const categories = description[1].split(',') || [];
+    const { categories, title } = getPostData(post.description);
+    const file = getPostFile(post.files);
 
     return {
       ...post,
+      file,
       title,
       categories,
     };

@@ -1,11 +1,11 @@
-export interface IPostData {
+export interface IResumedPost {
   id: string;
   public: Boolean;
   created_at: string;
   description: string;
   files: IFiles;
   title: string;
-  categories: Array<string>
+  categories: string[]
 }
 
 interface IFile {
@@ -14,6 +14,13 @@ interface IFile {
   raw_url: string;
 }
 
-interface IFiles {
+export interface IFiles {
   [key: string]: IFile
+}
+
+export interface IPostData {
+  title: string,
+  categories: string[]
+  date: string
+  content: string
 }
