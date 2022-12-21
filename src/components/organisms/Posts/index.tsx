@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight } from 'react-feather';
 import { listPosts } from 'api/posts/list';
 import Post from 'components/atoms/Post';
 
+import Loading from 'components/atoms/Loading';
 import {
   Container, List, Actions, Button,
 } from './styles';
@@ -15,23 +16,34 @@ const Posts: React.FC = () => {
 
   return (
     <Container>
-      <List>
-        {
-          !isLoading && data.map((post, index) => (
-            <Post data={post} key={index} />
-          ))
-        }
-      </List>
+      {
+        isLoading ? (<Loading />) : (
+          <>
+            <List>
+              {
+                data.map((post, index) => (
+                  <Post data={post} key={index} />
+                ))
+              }
+            </List>
 
-      <Actions>
-        <Button
-          disabled={page === 1}
-          onClick={() => setPage(page <= 1 ? 1 : page - 1)}
-        >
-          <ArrowLeft />
-        </Button>
-        <Button disabled={!data?.length} onClick={() => setPage(page + 1)}><ArrowRight /></Button>
-      </Actions>
+            <Actions>
+              <Button
+                disabled={page === 1}
+                onClick={() => setPage(page <= 1 ? 1 : page - 1)}
+              >
+                <ArrowLeft />
+              </Button>
+              <Button
+                disabled={!data?.length}
+                onClick={() => setPage(page + 1)}
+              >
+                <ArrowRight />
+              </Button>
+            </Actions>
+          </>
+        )
+      }
     </Container>
   );
 };

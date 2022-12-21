@@ -6,17 +6,20 @@ import { getPost } from 'api/posts/get';
 import Tag from 'components/atoms/Tag';
 import { useQuery } from 'react-query';
 import MarkdownPreview from 'components/atoms/MarkdonwPreview';
+import Loading from 'components/atoms/Loading';
 import { Container, Header } from './styles';
 
 const Post: React.FC = () => {
   const { id } = useParams();
 
-  const { data } = useQuery(['post', id], () => getPost(id));
+  const { data, isLoading } = useQuery(['post', id], () => getPost(id));
 
   return (
     <Container>
       {
-        data ? (
+        isLoading ? (
+          <Loading />
+        ) : (
           <>
             <Header>
               <h1>{data.title}</h1>
@@ -28,7 +31,7 @@ const Post: React.FC = () => {
 
             <MarkdownPreview content={data.content} />
           </>
-        ) : null
+        )
       }
     </Container>
   );
