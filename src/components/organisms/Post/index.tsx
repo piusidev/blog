@@ -1,29 +1,35 @@
-import { getPost } from 'api/posts/get';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import MarkdownPreview from 'react-markdown';
-import { Container } from './styles';
+
+import { getPost } from 'api/posts/get';
+
+import Tag from 'components/atoms/Tag';
+import { useQuery } from 'react-query';
+import MarkdownPreview from 'components/atoms/MarkdonwPreview';
+import { Container, Header } from './styles';
 
 const Post: React.FC = () => {
   const { id } = useParams();
 
-  const [post, setPost] = useState<any>('');
-
-  useEffect(() => {
-    const fetch = async () => {
-      const data = await getPost(id);
-
-      setPost(data);
-    };
-
-    if (id) {
-      fetch();
-    }
-  }, [id]);
+  const { data } = useQuery(['post', id], () => getPost(id));
 
   return (
     <Container>
-      <MarkdownPreview>{post.content}</MarkdownPreview>
+      {
+        data ? (
+          <>
+            <Header>
+              <h1>{data.title}</h1>
+
+              <div>
+                { data.categories.map((i) => (<Tag name={i} />)) }
+              </div>
+            </Header>
+
+            <MarkdownPreview content={data.content} />
+          </>
+        ) : null
+      }
     </Container>
   );
 };

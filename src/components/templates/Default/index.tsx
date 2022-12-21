@@ -1,4 +1,4 @@
-import { Menu } from 'components/atoms/Menu';
+import Menu from 'components/atoms/Menu';
 import Sidebar from 'components/molecules/Sidebar';
 import React from 'react';
 import {

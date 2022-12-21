@@ -6,6 +6,7 @@ import { getDate } from 'utils/date';
 import routes from 'config/routes';
 import { IResumedPost } from 'types/post';
 import { Card, Categories } from './styles';
+import Tag from '../Tag';
 
 interface IPostProps {
   data: IResumedPost
@@ -24,9 +25,7 @@ const Post: React.FC<IPostProps> = ({ data }) => {
       <Categories>
         {
           data.categories.map((category, index) => (
-            <span key={index}>
-              {category}
-            </span>
+            <Tag name={category} key={index} />
           ))
         }
       </Categories>

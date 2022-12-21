@@ -10,7 +10,7 @@ import {
   Container, Button, Items, Item, Divider,
 } from './styles';
 
-export const Menu: React.FC = () => {
+const Menu: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const ref = useRef(null);
@@ -78,3 +78,5 @@ export const Menu: React.FC = () => {
     </Container>
   );
 };
+
+export default Menu;

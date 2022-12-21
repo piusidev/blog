@@ -34,13 +34,4 @@ export const Categories = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.7rem;
-
-  span {
-    font-size: 0.8rem;
-    padding: 0.3rem 0.5rem;
-
-    background-color: ${({ theme }) => theme.text.opacify(0.1)};
-    box-shadow: ${({ theme }) => theme.boxShadow};
-    border-radius: 1rem;
-  }
 `;
