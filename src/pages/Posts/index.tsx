@@ -1,11 +1,13 @@
 import React from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 
-import List from 'components/organisms/Posts';
 import Title from 'components/atoms/Title';
+import ErrorFallback from 'components/molecules/ErrorBoundary';
+import List from 'components/organisms/Posts';
 
 export const Posts: React.FC = () => (
-  <div>
+  <ErrorBoundary FallbackComponent={ErrorFallback}>
     <Title title="Posts" />
     <List />
-  </div>
+  </ErrorBoundary>
 );

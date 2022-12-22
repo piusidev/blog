@@ -6,7 +6,7 @@ import { UseAuthProvider } from './useAuth';
 import { UseThemeProvider } from './useTheme';
 
 interface IGlobalProviderProps {
-  children: React.ReactNode
+  children: ReactChildren
 }
 
 const GlobalProvider: React.FC<IGlobalProviderProps> = ({ children }) => {
