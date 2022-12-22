@@ -4,7 +4,7 @@ import { middleware } from '../middleware';
 
 export const listRepos = async (
   page: number,
-  perPage: number = 30,
+  perPage: number = 10,
 ): Promise<IRepoData[] | null> => {
   const response = await internalApi.get('/user/repos', {
     params: {

@@ -1,50 +1,28 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
-import { ArrowLeft, ArrowRight } from 'react-feather';
 
 import { listPosts } from 'api/posts/list';
-import Post from 'components/atoms/Post';
+import { IResumedPost } from 'types/post';
 
-import Loading from 'components/atoms/Loading';
-import {
-  Container, List, Actions, Button,
-} from './styles';
+import Post from 'components/atoms/Post';
+import DataGrid from 'components/molecules/DataGrid';
 
 const Posts: React.FC = () => {
   const [page, setPage] = useState(1);
   const { data, isLoading } = useQuery(['posts', page], () => listPosts(page));
 
-  return (
-    <Container>
-      {
-        isLoading ? (<Loading />) : (
-          <>
-            <List>
-              {
-                data.map((post, index) => (
-                  <Post data={post} key={index} />
-                ))
-              }
-            </List>
+  const renderItem = (item: IResumedPost) => (
+    <Post data={item} />
+  );
 
-            <Actions>
-              <Button
-                disabled={page === 1}
-                onClick={() => setPage(page <= 1 ? 1 : page - 1)}
-              >
-                <ArrowLeft />
-              </Button>
-              <Button
-                disabled={!data?.length}
-                onClick={() => setPage(page + 1)}
-              >
-                <ArrowRight />
-              </Button>
-            </Actions>
-          </>
-        )
-      }
-    </Container>
+  return (
+    <DataGrid
+      isLoading={isLoading}
+      page={page}
+      setPage={setPage}
+      renderItem={renderItem}
+      data={data}
+    />
   );
 };
 
