@@ -11,7 +11,7 @@ import {
 
 const Repos: React.FC = () => {
   const [page, setPage] = useState(1);
-  const { data, isLoading } = useQuery(['stars', page], () => listRepos(page));
+  const { data, isLoading } = useQuery(['repos', page], () => listRepos(page));
 
   return (
     <Container>

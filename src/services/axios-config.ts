@@ -23,6 +23,7 @@ export const axiosInternalClient = (): AxiosInstance => {
     headers: {
       ...headers,
       Authorization: `Bearer ${process.env.GITHUB_API_KEY}`,
+      Accept: 'application/vnd.github+json',
     },
   });
 

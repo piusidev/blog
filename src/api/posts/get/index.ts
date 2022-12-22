@@ -3,8 +3,6 @@ import { internalApi, api } from 'services/api';
 import { middleware } from './middleware';
 
 export const getGist = async (id: string): Promise<IResumedPost> => {
-  internalApi.defaults.headers.Accept = 'application/vnd.github+json';
-
   const response = await internalApi.get(`/gists/${id}`);
 
   return middleware(response.data);

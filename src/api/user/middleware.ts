@@ -1,4 +1,4 @@
-import { IRepoData, IRepoResponse } from 'types/repos';
+import { IRepoResponse, IRepoData } from 'types/repos';
 
 export const middleware = (data: IRepoResponse): IRepoData => ({
   url: data.html_url || '',
