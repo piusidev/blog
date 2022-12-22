@@ -7,7 +7,7 @@ const ErrorFallback: React.FC<FallbackProps> = () => (
   <Error role="alert">
     <XCircle />
 
-    <p>Ops, something went wrong:</p>
+    <p>Ops, something went wrong.</p>
   </Error>
 );
 
