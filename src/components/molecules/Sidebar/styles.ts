@@ -1,7 +1,11 @@
 import { lighten, rgba } from 'polished';
 import styled from 'styled-components';
 
-export const Container = styled.section`
+interface IContainerProps {
+  isOpen: boolean
+}
+
+export const Container = styled.section<IContainerProps>`
   position: fixed;
 
   top: 0;
@@ -12,6 +16,35 @@ export const Container = styled.section`
   max-width: 400px;
 
   padding: 1rem;
+
+  transition: ${({ theme }) => theme.transition};
+
+  z-index: 2;
+
+  @media (max-width: 991px) {
+    top: unset;
+
+    bottom: ${({ isOpen }) => (isOpen ? '0' : 'calc(-100% + 4rem);')};
+
+    max-width: unset;
+  }
+`;
+
+export const Tab = styled.div`
+  width: 100%;
+  height: 3rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: ${({ theme }) => theme.accent.color};
+
+  border-radius: 1.5rem 1.5rem 0 0;
+
+  @media (min-width: 991px) {
+    display: none;
+  }
 `;
 
 export const Sidebar = styled.div`
@@ -22,6 +55,13 @@ export const Sidebar = styled.div`
 
   padding: 3rem;
   border-radius: 1.5rem;
+  
+  @media (max-width: 991px) {
+    top: unset;
+    left: unset;
+    
+    border-radius: 0 0 1.5rem 1.5rem;
+  }
 
   .item-active {
     background-color: ${({ theme }) => theme.text.opacify(0.1)};

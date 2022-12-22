@@ -10,6 +10,10 @@ export const Container = styled.div`
 
   display: flex;
   padding: 2rem;
+
+  @media (max-width: 991px) {
+    margin-bottom: 2rem;
+  }
 `;
 
 export const Header = styled.header`
@@ -24,4 +28,8 @@ export const Section = styled.section`
   height: 100%;
 
   padding-left: 400px;
+
+  @media (max-width: 991px) {
+    padding-left: unset;
+  }
 `;
