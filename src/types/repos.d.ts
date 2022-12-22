@@ -1,4 +1,4 @@
-export interface IStarsResponse {
+export interface IRepoResponse {
   name: string
   html_url: string
   language: string
@@ -10,9 +10,9 @@ export interface IStarsResponse {
   }
 }
 
-export interface IStarsData {
+export interface IRepoData {
   url: string
-  stars: number
+  stars: string
   name: string
   language: string
   description: string
