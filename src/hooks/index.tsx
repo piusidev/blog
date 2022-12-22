@@ -2,6 +2,7 @@ import React from 'react';
 import { QueryClientProvider, QueryClient } from 'react-query';
 
 import { GlobalStyle } from 'styles';
+import { UseAuthProvider } from './useAuth';
 import { UseThemeProvider } from './useTheme';
 
 interface IGlobalProviderProps {
@@ -20,8 +21,10 @@ const GlobalProvider: React.FC<IGlobalProviderProps> = ({ children }) => {
   return (
     <UseThemeProvider>
       <QueryClientProvider client={queryClient}>
-        <GlobalStyle />
-        {children}
+        <UseAuthProvider>
+          <GlobalStyle />
+          {children}
+        </UseAuthProvider>
       </QueryClientProvider>
     </UseThemeProvider>
   );
