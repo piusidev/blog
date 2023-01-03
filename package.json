@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint ./**/*.{tsx,ts}",
-    "lint:fix": "eslint --fix ./**/*.{tsx,ts}"
+    "lint:fix": "eslint --fix ./**/*.{tsx,ts}",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@next/font": "13.1.0",
@@ -28,7 +29,7 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.11",
-    "husky": "^8.0.3",
+    "husky": "^8.0.0",
     "lint-staged": "^13.1.0",
     "prettier": "^2.8.1"
   }
