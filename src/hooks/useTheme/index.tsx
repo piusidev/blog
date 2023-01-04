@@ -24,7 +24,9 @@ type PossibleThemes = 'dark' | 'light'
 
 const themeStore = Store('theme')
 
-const UseThemeContext = createContext<IUseThemeContextData>(null)
+const UseThemeContext = createContext<IUseThemeContextData>(
+  {} as IUseThemeContextData
+)
 
 const UseThemeProvider: React.FC<IUseThemeProviderProps> = ({ children }) => {
   const [theme, setTheme] = useState<DefaultTheme>(themes.dark)
@@ -50,7 +52,7 @@ const UseThemeProvider: React.FC<IUseThemeProviderProps> = ({ children }) => {
   }, [])
 
   useEffect(() => {
-    themeStore.set(theme.title)
+    themeStore.set<string>(theme.title)
   }, [theme])
 
   const contextValue = useMemo(

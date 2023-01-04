@@ -17,7 +17,9 @@ import { IUseAuthContextData, IUseAuthProviderProps } from './types'
 
 const authStore = Store('auth')
 
-const UseAuthContext = createContext<IUseAuthContextData>(null)
+const UseAuthContext = createContext<IUseAuthContextData>(
+  {} as IUseAuthContextData
+)
 
 const UseAuthProvider: React.FC<IUseAuthProviderProps> = ({ children }) => {
   const [authenticated, setAuthenticated] = useState(false)
