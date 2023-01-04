@@ -9,13 +9,17 @@ import { Container, Button, Items, Item, Divider } from './styles'
 const Menu: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
 
-  const ref = useRef(null)
+  const ref = useRef<HTMLDivElement>(null)
 
   const { authenticated } = useAuth()
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      if (!ref.current.contains(e.target)) {
+      if (!ref.current) {
+        return
+      }
+
+      if (!ref.current.contains(e.target as Node)) {
         setIsOpen(false)
       }
     }

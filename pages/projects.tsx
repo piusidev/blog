@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Page from '@/pages/Home'
+import Page from '@/pages/Projects'
 
 export default function Home() {
   return (

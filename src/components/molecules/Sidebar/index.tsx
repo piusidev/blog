@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
-import { useLocation, Link } from 'react-router-dom'
 
 import { ChevronDown, ChevronUp } from 'react-feather'
 import { Container, Sidebar, Item, Tab } from './styles'
 
 import { items } from './data'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 const Component: React.FC = () => {
-  const location = useLocation()
+  const router = useRouter()
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -18,10 +19,10 @@ const Component: React.FC = () => {
       </Tab>
       <Sidebar>
         {items.map((item, index) => {
-          const isActive = location.pathname === item.path
+          const isActive = router.pathname === item.path
 
           return (
-            <Link to={item.path} key={index} onClick={() => setIsOpen(false)}>
+            <Link href={item.path} key={index} onClick={() => setIsOpen(false)}>
               <Item className={`${isActive && 'item-active'}`}>
                 {item.icon}
 

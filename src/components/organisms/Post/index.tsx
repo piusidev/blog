@@ -1,5 +1,4 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
 
 import { getPost } from '@/api/posts/get'
 
@@ -8,30 +7,37 @@ import { useQuery } from 'react-query'
 import MarkdownPreview from '@/components/atoms/MarkdonwPreview'
 import Loading from '@/components/atoms/Loading'
 import { Container, Header } from './styles'
+import { useRouter } from 'next/router'
 
 const Post: React.FC = () => {
-  const { id } = useParams()
+  const router = useRouter()
 
-  const { data, isLoading } = useQuery(['post', id], () => getPost(id))
+  const { id } = router.query
+
+  const { data, isLoading } = useQuery(['post', id], () =>
+    getPost(id as string)
+  )
 
   return (
     <Container>
       {isLoading ? (
         <Loading />
       ) : (
-        <>
-          <Header>
-            <h1>{data.title}</h1>
+        data && (
+          <>
+            <Header>
+              <h1>{data.title}</h1>
 
-            <div>
-              {data.categories.map((tag, index) => (
-                <Tag name={tag} key={index} />
-              ))}
-            </div>
-          </Header>
+              <div>
+                {data.categories.map((tag, index) => (
+                  <Tag name={tag} key={index} />
+                ))}
+              </div>
+            </Header>
 
-          <MarkdownPreview content={data.content} />
-        </>
+            <MarkdownPreview content={data.content} />
+          </>
+        )
       )}
     </Container>
   )

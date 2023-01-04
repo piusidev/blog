@@ -43,7 +43,7 @@ const UseThemeProvider: React.FC<IUseThemeProviderProps> = ({ children }) => {
   )
 
   useEffect(() => {
-    const storedTheme: PossibleThemes = themeStore.get()
+    const storedTheme: PossibleThemes = 'dark'
     const themeList = Object.values(themes).map((item) => item.title)
 
     if (themeList.includes(storedTheme)) {

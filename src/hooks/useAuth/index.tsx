@@ -6,7 +6,6 @@ import React, {
   useMemo,
   useCallback,
 } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import { authenticate } from '@/api/auth'
 import { api } from '@/services/api'
@@ -14,6 +13,7 @@ import Store from '@/utils/store'
 
 import routes from '@/config/routes'
 import { IUseAuthContextData, IUseAuthProviderProps } from './types'
+import { useRouter } from 'next/router'
 
 const authStore = Store('auth')
 
@@ -25,10 +25,10 @@ const UseAuthProvider: React.FC<IUseAuthProviderProps> = ({ children }) => {
   const [authenticated, setAuthenticated] = useState(false)
   const [loading, setLoading] = useState(true)
 
-  const navigate = useNavigate()
+  const router = useRouter()
 
   useEffect(() => {
-    const token: string = authStore.get()
+    const token = ''
 
     if (token) {
       api.defaults.headers.Authorization = `Bearer ${token}`
@@ -49,8 +49,8 @@ const UseAuthProvider: React.FC<IUseAuthProviderProps> = ({ children }) => {
     api.defaults.headers.Authorization = `Bearer ${token}`
     setAuthenticated(true)
 
-    navigate(routes.home.path)
-  }, [navigate])
+    router.push(routes.home)
+  }, [router])
 
   const handleLogout = useCallback((): void => {
     authStore.clear()
@@ -58,8 +58,8 @@ const UseAuthProvider: React.FC<IUseAuthProviderProps> = ({ children }) => {
     api.defaults.headers.Authorization = null
     setAuthenticated(false)
 
-    navigate(routes.home.path)
-  }, [navigate])
+    router.push(routes.home)
+  }, [router])
 
   const contextValue = useMemo(
     () => ({

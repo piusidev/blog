@@ -6,6 +6,7 @@ export const listPosts = async (
   page: number,
   perPage = 10
 ): Promise<IResumedPost[]> => {
+  console.log('oi')
   const response = await internalApi.get('/gists', {
     params: {
       page,
