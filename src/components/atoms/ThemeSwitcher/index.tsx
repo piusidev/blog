@@ -1,12 +1,12 @@
-import React from 'react';
-import { Sun, Moon } from 'react-feather';
+import React from 'react'
+import { Sun, Moon } from 'react-feather'
 
-import { useTheme } from 'hooks/useTheme';
+import { useTheme } from '@/hooks/useTheme'
 
-import { Container, Switcher, Option } from './styles';
+import { Container, Switcher, Option } from './styles'
 
 const ThemeSwitcher: React.FC = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useTheme()
 
   return (
     <Container>
@@ -27,10 +27,9 @@ const ThemeSwitcher: React.FC = () => {
           <Sun />
           Light
         </Option>
-
       </Switcher>
     </Container>
-  );
-};
+  )
+}
 
-export default ThemeSwitcher;
+export default ThemeSwitcher

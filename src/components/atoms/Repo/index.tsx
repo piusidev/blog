@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import { Star } from 'react-feather';
-import { IRepoData } from 'types/repos';
-import { Card, Details } from './styles';
+import { Star } from 'react-feather'
+import { IRepoData } from '@/types/repos'
+import { Card, Details } from './styles'
 
 interface IRepoProps {
   data: IRepoData
@@ -27,6 +27,6 @@ const Repo: React.FC<IRepoProps> = ({ data }) => (
       ) : null}
     </Details>
   </Card>
-);
+)
 
-export default Repo;
+export default Repo

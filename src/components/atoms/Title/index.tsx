@@ -1,10 +1,10 @@
-import React from 'react';
-import { Text } from './styles';
+import React from 'react'
+import { Text } from './styles'
 
 interface ITitleProps {
-  title: string;
+  title: string
 }
 
-const Title: React.FC<ITitleProps> = ({ title }) => <Text>{title}</Text>;
+const Title: React.FC<ITitleProps> = ({ title }) => <Text>{title}</Text>
 
-export default Title;
+export default Title

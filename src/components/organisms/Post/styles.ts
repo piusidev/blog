@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Header = styled.div`
   margin: 2rem 0;
@@ -13,7 +13,6 @@ export const Header = styled.div`
     display: flex;
     gap: 0.5rem;
   }
-`;
+`
 
-export const Container = styled.div`
-`;
+export const Container = styled.div``

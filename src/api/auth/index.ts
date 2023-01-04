@@ -4,8 +4,9 @@ interface IAuthenticateResponse {
   }
 }
 
-export const authenticate = async (): Promise<IAuthenticateResponse> => new Promise((resolve) => {
-  setTimeout(() => {
-    resolve({ data: { token: '123' } });
-  }, 2000);
-});
+export const authenticate = async (): Promise<IAuthenticateResponse> =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ data: { token: '123' } })
+    }, 2000)
+  })

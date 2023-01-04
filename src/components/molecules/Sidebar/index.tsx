@@ -1,44 +1,41 @@
-import React, { useState } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import React, { useState } from 'react'
 
-import { ChevronDown, ChevronUp } from 'react-feather';
-import {
-  Container, Sidebar, Item, Tab,
-} from './styles';
+import { ChevronDown, ChevronUp } from 'react-feather'
+import { Container, Sidebar, Item, Tab } from './styles'
 
-import { items } from './data';
+import { items } from './data'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 const Component: React.FC = () => {
-  const location = useLocation();
+  const router = useRouter()
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <Container isOpen={isOpen}>
       <Tab onClick={() => setIsOpen(!isOpen)}>
-        { isOpen ? <ChevronDown /> : <ChevronUp />}
+        {isOpen ? <ChevronDown /> : <ChevronUp />}
       </Tab>
       <Sidebar>
-        {
-          items.map((item, index) => {
-            const isActive = location.pathname === item.path;
+        {items.map((item, index) => {
+          const isActive = router.pathname === item.path
 
-            return (
-              <Link to={item.path} key={index} onClick={() => setIsOpen(false)}>
-                <Item className={`${isActive && 'item-active'}`}>
-                  {item.icon}
+          return (
+            <Link href={item.path} key={index} onClick={() => setIsOpen(false)}>
+              <Item className={`${isActive && 'item-active'}`}>
+                {item.icon}
 
-                  <p>{item.title}</p>
+                <p>{item.title}</p>
 
-                  <span>{item.total}</span>
-                </Item>
-              </Link>
-            );
-          })
-        }
+                <span>{item.total}</span>
+              </Item>
+            </Link>
+          )
+        })}
       </Sidebar>
     </Container>
-  );
-};
+  )
+}
 
-export default Component;
+export default Component

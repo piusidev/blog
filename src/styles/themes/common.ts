@@ -5,4 +5,4 @@ export const common = {
     rgb(0 0 0 / 5%) 0px 30px 70px
   `,
   transition: '150ms ease',
-};
+}

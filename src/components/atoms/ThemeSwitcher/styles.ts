@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   p {
@@ -16,7 +16,7 @@ export const Container = styled.div`
     transition: ${({ theme }) => theme.transition};
     opacity: 1;
   }
-`;
+`
 
 export const Switcher = styled.div`
   background-color: ${({ theme }) => theme.background.color};
@@ -29,7 +29,7 @@ export const Switcher = styled.div`
   gap: 1rem;
 
   padding: 0.2rem;
-`;
+`
 
 export const Option = styled.div`
   width: 100%;
@@ -55,4 +55,4 @@ export const Option = styled.div`
   svg {
     width: 1rem;
   }
-`;
+`

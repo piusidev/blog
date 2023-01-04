@@ -5,11 +5,11 @@ import React, {
   useEffect,
   useMemo,
   useState,
-} from 'react';
-import { DefaultTheme, ThemeProvider } from 'styled-components';
+} from 'react'
+import { DefaultTheme, ThemeProvider } from 'styled-components'
 
-import Store from 'utils/store';
-import themes from 'styles/themes';
+import Store from '@/utils/store'
+import themes from '@/styles/themes'
 
 interface IUseThemeContextData {
   theme: DefaultTheme
@@ -20,53 +20,61 @@ interface IUseThemeProviderProps {
   children: React.ReactNode
 }
 
-type PossibleThemes = 'dark' | 'light';
+type PossibleThemes = 'dark' | 'light'
 
-const themeStore = Store('theme');
+const themeStore = Store('theme')
 
-const UseThemeContext = createContext<IUseThemeContextData>(null);
+const UseThemeContext = createContext<IUseThemeContextData>(
+  {} as IUseThemeContextData
+)
 
 const UseThemeProvider: React.FC<IUseThemeProviderProps> = ({ children }) => {
-  const [theme, setTheme] = useState<DefaultTheme>(themes.dark);
+  const [theme, setTheme] = useState<DefaultTheme>(themes.dark)
 
-  const toggleTheme = useCallback((newTheme?: PossibleThemes): void => {
-    if (newTheme) {
-      return setTheme(themes[newTheme]);
-    }
+  const toggleTheme = useCallback(
+    (newTheme?: PossibleThemes): void => {
+      if (newTheme) {
+        return setTheme(themes[newTheme])
+      }
 
-    return setTheme(theme.title === 'dark' ? themes.light : themes.dark);
-  }, [theme.title]);
+      return setTheme(theme.title === 'dark' ? themes.light : themes.dark)
+    },
+    [theme.title]
+  )
 
   useEffect(() => {
-    const storedTheme: PossibleThemes = themeStore.get();
-    const themeList = Object.values(themes).map((item) => item.title);
+    const storedTheme: PossibleThemes = 'dark'
+    const themeList = Object.values(themes).map((item) => item.title)
 
     if (themeList.includes(storedTheme)) {
-      setTheme(themes[storedTheme]);
+      setTheme(themes[storedTheme])
     }
-  }, []);
+  }, [])
 
   useEffect(() => {
-    themeStore.set(theme.title);
-  }, [theme]);
+    themeStore.set<string>(theme.title)
+  }, [theme])
 
-  const contextValue = useMemo(() => ({ theme, toggleTheme }), [theme, toggleTheme]);
+  const contextValue = useMemo(
+    () => ({ theme, toggleTheme }),
+    [theme, toggleTheme]
+  )
 
   return (
     <UseThemeContext.Provider value={contextValue}>
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </UseThemeContext.Provider>
-  );
-};
+  )
+}
 
 const useTheme = (): IUseThemeContextData => {
-  const context = useContext(UseThemeContext);
+  const context = useContext(UseThemeContext)
 
   if (!context) {
-    throw new Error('useTheme must be used within an UseThemeProvider');
+    throw new Error('useTheme must be used within an UseThemeProvider')
   }
 
-  return context;
-};
+  return context
+}
 
-export { UseThemeProvider, useTheme };
+export { UseThemeProvider, useTheme }

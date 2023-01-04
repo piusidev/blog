@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Loader = styled.div`
   width: 100%;
@@ -9,4 +9,4 @@ export const Loader = styled.div`
   justify-content: center;
 
   padding: 3rem 0;
-`;
+`

@@ -1,5 +1,5 @@
-import React from 'react';
+import React from 'react'
 
 declare global {
-  type ReactChildren = React.ReactElement | React.ReactElement[] | string;
+  type ReactChildren = React.ReactElement | React.ReactElement[] | string
 }

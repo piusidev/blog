@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 
 interface IItemProps {
   isClickable?: boolean
@@ -20,7 +20,7 @@ export const Container = styled.div`
     transform: translateY(-20px);
     transition: ${({ theme }) => theme.transition};
   }
-`;
+`
 
 export const Button = styled.button`
   background-color: ${({ theme }) => theme.accent.color};
@@ -38,7 +38,7 @@ export const Button = styled.button`
   &:hover {
     opacity: 0.8;
   }
-`;
+`
 
 export const Items = styled.div`
   width: 200px;
@@ -62,7 +62,7 @@ export const Items = styled.div`
 
     color: ${({ theme }) => theme.text.opacify(0.7)};
   }
-`;
+`
 
 export const Item = styled.div<IItemProps>`
   padding: 1rem;
@@ -95,16 +95,16 @@ export const Item = styled.div<IItemProps>`
         &:hover {
           opacity: 0.3;
         }
-      `;
+      `
     }
 
-    return false;
+    return false
   }}
-`;
+`
 
 export const Divider = styled.div`
   width: 100%;
   height: 1px;
 
   background-color: ${({ theme }) => theme.text.opacify(0.1)};
-`;
+`

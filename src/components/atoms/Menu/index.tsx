@@ -1,33 +1,33 @@
-import { useAuth } from 'hooks/useAuth';
-import React, { useEffect, useRef, useState } from 'react';
+import { useAuth } from '@/hooks/useAuth'
+import React, { useEffect, useRef, useState } from 'react'
 
-import {
-  MoreVertical, Settings, Info, LogIn, LogOut,
-} from 'react-feather';
-import ThemeSwitcher from '../ThemeSwitcher';
+import { MoreVertical, Settings, Info, LogIn, LogOut } from 'react-feather'
+import ThemeSwitcher from '../ThemeSwitcher'
 
-import {
-  Container, Button, Items, Item, Divider,
-} from './styles';
+import { Container, Button, Items, Item, Divider } from './styles'
 
 const Menu: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null)
 
-  const { authenticated } = useAuth();
+  const { authenticated } = useAuth()
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      if (!ref.current.contains(e.target)) {
-        setIsOpen(false);
+      if (!ref.current) {
+        return
       }
-    };
 
-    document.addEventListener('mousedown', handler);
+      if (!ref.current.contains(e.target as Node)) {
+        setIsOpen(false)
+      }
+    }
 
-    return () => document.removeEventListener('mousedown', handler);
-  });
+    document.addEventListener('mousedown', handler)
+
+    return () => document.removeEventListener('mousedown', handler)
+  })
 
   return (
     <Container ref={ref}>
@@ -42,30 +42,28 @@ const Menu: React.FC = () => {
 
         <Divider />
 
-        <Item isClickable onClick={() => {}}>
+        <Item isClickable>
           <Settings />
           Settings
         </Item>
 
-        <Item isClickable onClick={() => {}}>
+        <Item isClickable>
           <Info />
           About
         </Item>
 
-        <Item isClickable onClick={() => {}}>
-          {
-            authenticated ? (
-              <>
-                <LogOut />
-                Logout
-              </>
-            ) : (
-              <>
-                <LogIn />
-                Login
-              </>
-            )
-          }
+        <Item isClickable>
+          {authenticated ? (
+            <>
+              <LogOut />
+              Logout
+            </>
+          ) : (
+            <>
+              <LogIn />
+              Login
+            </>
+          )}
         </Item>
 
         <Divider />
@@ -76,7 +74,7 @@ const Menu: React.FC = () => {
         </Item>
       </Items>
     </Container>
-  );
-};
+  )
+}
 
-export default Menu;
+export default Menu

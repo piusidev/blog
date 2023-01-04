@@ -1,6 +1,6 @@
 export interface IUseAuthContextData {
-  authenticated: Boolean
-  loading: Boolean
+  authenticated: boolean
+  loading: boolean
   handleLogin: () => Promise<void>
   handleLogout: () => void
 }

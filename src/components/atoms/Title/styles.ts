@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Text = styled.h1`
   width: 100%;
@@ -6,4 +6,4 @@ export const Text = styled.h1`
   font-size: 2rem;
 
   margin-bottom: 2rem;
-`;
+`

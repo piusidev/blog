@@ -1,47 +1,44 @@
-import React, { useEffect } from 'react';
-import { ArrowLeft, ArrowRight, Meh } from 'react-feather';
+import React, { useEffect } from 'react'
+import { ArrowLeft, ArrowRight, Meh } from 'react-feather'
 
-import Loading from 'components/atoms/Loading';
+import Loading from '@/components/atoms/Loading'
 
-import {
-  Container, List, Actions, Button, NoData,
-} from './styles';
-import { IDataGridProps } from './types';
+import { Container, List, Actions, Button, NoData } from './styles'
+import { IDataGridProps } from './types'
 
 const DataGrid: React.FC<IDataGridProps> = ({
-  page, setPage, isLoading, data, renderItem,
+  page,
+  setPage,
+  isLoading,
+  data,
+  renderItem,
 }) => {
   const scrollToTop = () => {
-    window.scrollTo(0, 0);
-  };
+    window.scrollTo(0, 0)
+  }
 
   useEffect(() => {
-    scrollToTop();
-  }, [page]);
+    scrollToTop()
+  }, [page])
 
   return (
     <Container>
-      {
-      isLoading ? (<Loading />) : (
+      {isLoading ? (
+        <Loading />
+      ) : (
         <>
-          {
-            data.length ? (
-              <List>
-                {
-                data.map((item, index) => (
-                  <div key={index}>
-                    {renderItem(item)}
-                  </div>
-                ))
-              }
-              </List>
-            ) : (
-              <NoData>
-                <Meh />
-                <p>There is nothing here...</p>
-              </NoData>
-            )
-          }
+          {data.length ? (
+            <List>
+              {data.map((item, index) => (
+                <div key={index}>{renderItem(item)}</div>
+              ))}
+            </List>
+          ) : (
+            <NoData>
+              <Meh />
+              <p>There is nothing here...</p>
+            </NoData>
+          )}
 
           <Actions>
             <p>{`Page: ${page}`}</p>
@@ -52,18 +49,14 @@ const DataGrid: React.FC<IDataGridProps> = ({
             >
               <ArrowLeft />
             </Button>
-            <Button
-              disabled={!data.length}
-              onClick={() => setPage(page + 1)}
-            >
+            <Button disabled={!data.length} onClick={() => setPage(page + 1)}>
               <ArrowRight />
             </Button>
           </Actions>
         </>
-      )
-    }
+      )}
     </Container>
-  );
-};
+  )
+}
 
-export default DataGrid;
+export default DataGrid

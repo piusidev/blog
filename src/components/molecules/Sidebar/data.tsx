@@ -1,12 +1,10 @@
-import React from 'react';
-import {
-  Home, Code, Star, Feather,
-} from 'react-feather';
+import React from 'react'
+import { Home, Code, Star, Feather } from 'react-feather'
 
 interface ISidebarItems {
   icon: React.ReactElement
-  title: string;
-  path: string;
+  title: string
+  path: string
   total: number
 }
 
@@ -35,4 +33,4 @@ export const items: ISidebarItems[] = [
     icon: <Star />,
     total: 15,
   },
-];
+]

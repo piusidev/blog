@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 interface IDataGridProps {
   isLoading: boolean
@@ -6,6 +6,6 @@ interface IDataGridProps {
   page: number
   setPage: (page: number) => void
 
-  data: Array<any>
-  renderItem: (item: any) => React.ReactNode
+  data: Array<object>
+  renderItem: (item: object) => React.ReactNode
 }

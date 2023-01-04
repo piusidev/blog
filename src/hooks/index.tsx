@@ -1,9 +1,9 @@
-import React from 'react';
-import { QueryClientProvider, QueryClient } from 'react-query';
+import React from 'react'
+import { QueryClientProvider, QueryClient } from 'react-query'
 
-import { GlobalStyle } from 'styles';
-import { UseAuthProvider } from './useAuth';
-import { UseThemeProvider } from './useTheme';
+import { GlobalStyle } from '@/styles'
+import { UseAuthProvider } from './useAuth'
+import { UseThemeProvider } from './useTheme'
 
 interface IGlobalProviderProps {
   children: ReactChildren
@@ -16,7 +16,7 @@ const GlobalProvider: React.FC<IGlobalProviderProps> = ({ children }) => {
         refetchOnMount: false,
       },
     },
-  });
+  })
 
   return (
     <UseThemeProvider>
@@ -27,7 +27,7 @@ const GlobalProvider: React.FC<IGlobalProviderProps> = ({ children }) => {
         </UseAuthProvider>
       </QueryClientProvider>
     </UseThemeProvider>
-  );
-};
+  )
+}
 
-export default GlobalProvider;
+export default GlobalProvider

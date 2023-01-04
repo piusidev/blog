@@ -1,16 +1,16 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-`;
+`
 
 export const List = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-`;
+`
 
 export const NoData = styled.div`
   width: 100%;
@@ -27,7 +27,7 @@ export const NoData = styled.div`
     width: 2rem;
     height: 2rem;
   }
-`;
+`
 
 export const Actions = styled.div`
   align-self: flex-end;
@@ -36,7 +36,7 @@ export const Actions = styled.div`
 
   display: flex;
   gap: 1rem;
-`;
+`
 
 export const Button = styled.button`
   background: ${({ theme }) => theme.accent.color};
@@ -51,10 +51,10 @@ export const Button = styled.button`
 
   &:hover {
     opacity: 0.5;
-    box-shadow: ${({ theme }) => theme.boxShadow};;
+    box-shadow: ${({ theme }) => theme.boxShadow};
   }
 
   svg {
     width: 1rem;
   }
-`;
+`

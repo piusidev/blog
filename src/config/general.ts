@@ -1,5 +1,5 @@
 const config = {
   localStorageKey: 'the-project-storage',
-};
+}
 
-export default config;
+export default config

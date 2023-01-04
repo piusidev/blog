@@ -1,7 +1,7 @@
-import { DefaultTheme } from 'styled-components';
-import { rgba } from 'polished';
+import { DefaultTheme } from 'styled-components'
+import { rgba } from 'polished'
 
-import { common } from './common';
+import { common } from './common'
 
 const dark: DefaultTheme = {
   ...common,
@@ -23,6 +23,6 @@ const dark: DefaultTheme = {
     color: '#2a2e37',
     contrast: rgba('#2a2e37', 0.05),
   },
-};
+}
 
-export default dark;
+export default dark

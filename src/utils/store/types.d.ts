@@ -1,6 +1,6 @@
 export interface IStore {
-  get: () => any
-  set: (data: any) => any
-  merge: (data: any) => any
-  clear: () => any
+  get: <T>() => T
+  set: <T>(data: T) => void
+  merge: <T>(data: T) => void
+  clear: () => void
 }

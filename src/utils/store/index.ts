@@ -1,54 +1,56 @@
-import config from 'config/general';
-import { IStore } from './types';
+import config from '@/config/general'
+import { IStore } from './types'
 
 const Store = (key: string): IStore => {
-  const localStorageKey = `${config.localStorageKey}-${key}`;
+  const localStorageKey = `${config.localStorageKey}-${key}`
 
-  const get = (): any => {
+  const get = <T>(): T => {
     try {
-      const storage = JSON.parse(window.localStorage.getItem(localStorageKey));
+      const storage = JSON.parse(
+        window.localStorage.getItem(localStorageKey) || ''
+      )
 
-      return storage;
+      return storage
     } catch (err) {
-      throw new Error('Unable to get storage!', err);
+      throw new Error('Unable to get storage!')
     }
-  };
+  }
 
-  const set = (data: any): any => {
+  const set = <T>(data: T) => {
     try {
-      const stringfiedStorage = JSON.stringify(data);
+      const stringfiedStorage = JSON.stringify(data)
 
-      return window.localStorage.setItem(localStorageKey, stringfiedStorage);
+      return window.localStorage.setItem(localStorageKey, stringfiedStorage)
     } catch (err) {
-      throw new Error('Unable to set storage!', err);
+      throw new Error('Unable to set storage!')
     }
-  };
+  }
 
-  const merge = (data: any): any => {
+  const merge = <T>(data: T) => {
     try {
-      const currentStorage = get();
-      const mergedStorage = { ...currentStorage, ...data };
+      const currentStorage = get() || ''
+      const mergedStorage = { ...currentStorage, ...data }
 
-      return set(mergedStorage);
+      return set<T>(mergedStorage)
     } catch (err) {
-      throw new Error('Unable to merge storage!', err);
+      throw new Error('Unable to merge storage!')
     }
-  };
+  }
 
   const clear = (): void => {
     try {
-      return window.localStorage.removeItem(localStorageKey);
+      return window.localStorage.removeItem(localStorageKey)
     } catch (err) {
-      throw new Error('Unable to remove item from storage!', err);
+      throw new Error('Unable to remove item from storage!')
     }
-  };
+  }
 
   return {
     get,
     set,
     merge,
     clear,
-  };
-};
+  }
+}
 
-export default Store;
+export default Store

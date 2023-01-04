@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   min-height: 100vh;
@@ -14,14 +14,14 @@ export const Container = styled.div`
   @media (max-width: 991px) {
     margin-bottom: 2rem;
   }
-`;
+`
 
 export const Header = styled.header`
   width: 100%;
 
   display: flex;
   justify-content: flex-end;
-`;
+`
 
 export const Section = styled.section`
   width: 100%;
@@ -32,4 +32,4 @@ export const Section = styled.section`
   @media (max-width: 991px) {
     padding-left: unset;
   }
-`;
+`

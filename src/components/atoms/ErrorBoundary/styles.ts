@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Error = styled.div`
   width: fit-content;
@@ -15,4 +15,4 @@ export const Error = styled.div`
     width: 3rem;
     height: 3rem;
   }
-`;
+`

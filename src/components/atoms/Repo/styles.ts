@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Card = styled.div`
   width: 100%;
@@ -28,7 +28,7 @@ export const Card = styled.div`
 
     text-decoration: underline;
   }
-`;
+`
 
 export const Details = styled.div`
   width: 100%;
@@ -50,4 +50,4 @@ export const Details = styled.div`
       width: 1rem;
     }
   }
-`;
+`

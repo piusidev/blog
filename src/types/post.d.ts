@@ -1,17 +1,17 @@
 export interface IResumedPost {
-  id: string;
-  public: Boolean;
-  created_at: string;
-  description: string;
-  files: IFiles;
-  title: string;
+  id: string
+  public: boolean
+  created_at: string
+  description: string
+  files: IFiles
+  title: string
   categories: string[]
 }
 
 interface IFile {
-  filename: string;
-  language: string;
-  raw_url: string;
+  filename: string
+  language: string
+  raw_url: string
 }
 
 export interface IFiles {
@@ -19,7 +19,7 @@ export interface IFiles {
 }
 
 export interface IPostData {
-  title: string,
+  title: string
   categories: string[]
   date: string
   content: string

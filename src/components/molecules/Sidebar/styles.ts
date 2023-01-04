@@ -1,5 +1,5 @@
-import { lighten, rgba } from 'polished';
-import styled from 'styled-components';
+import { lighten, rgba } from 'polished'
+import styled from 'styled-components'
 
 interface IContainerProps {
   isOpen: boolean
@@ -28,7 +28,7 @@ export const Container = styled.section<IContainerProps>`
 
     max-width: unset;
   }
-`;
+`
 
 export const Tab = styled.div`
   width: 100%;
@@ -45,7 +45,7 @@ export const Tab = styled.div`
   @media (min-width: 991px) {
     display: none;
   }
-`;
+`
 
 export const Sidebar = styled.div`
   height: 100%;
@@ -55,11 +55,11 @@ export const Sidebar = styled.div`
 
   padding: 3rem;
   border-radius: 1.5rem;
-  
+
   @media (max-width: 991px) {
     top: unset;
     left: unset;
-    
+
     border-radius: 0 0 1.5rem 1.5rem;
   }
 
@@ -68,7 +68,7 @@ export const Sidebar = styled.div`
 
     box-shadow: ${({ theme }) => theme.boxShadow};
   }
-`;
+`
 
 export const Item = styled.div`
   width: 100%;
@@ -83,7 +83,7 @@ export const Item = styled.div`
   border-radius: 0.7rem;
 
   cursor: pointer;
-  transition: background-color ${({ theme }) => theme.transition};;
+  transition: background-color ${({ theme }) => theme.transition};
 
   &:hover {
     background-color: ${({ theme }) => theme.text.opacify(0.1)};
@@ -95,7 +95,8 @@ export const Item = styled.div`
     width: 0.9rem;
   }
 
-  p, span {
+  p,
+  span {
     font-size: 0.9rem;
   }
 
@@ -113,4 +114,4 @@ export const Item = styled.div`
     color: ${({ theme }) => rgba(theme.text.color, 0.5)};
     background-color: ${({ theme }) => lighten(0.1, theme.accent.color)};
   }
-`;
+`

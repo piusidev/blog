@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Article = styled.article`
   h1,
@@ -15,7 +15,8 @@ export const Article = styled.article`
     margin-bottom: 1rem;
   }
 
-  ul, ol {
+  ul,
+  ol {
     padding-left: 2rem;
   }
 
@@ -65,7 +66,7 @@ export const Article = styled.article`
   }
 
   .hljs-params {
-    color: #ffb86c
+    color: #ffb86c;
   }
 
   .hljs-keyword {
@@ -127,4 +128,4 @@ export const Article = styled.article`
   .hljs-emphasis {
     font-style: italic;
   }
-`;
+`

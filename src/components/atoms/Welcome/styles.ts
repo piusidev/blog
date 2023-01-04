@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Message = styled.div`
   h1 {
@@ -12,6 +12,6 @@ export const Message = styled.div`
     font-weight: 300;
     font-size: 1.2rem;
 
-    color: ${({ theme }) => theme.text.opacify(0.5)}
+    color: ${({ theme }) => theme.text.opacify(0.5)};
   }
-`;
+`

@@ -1,4 +1,4 @@
-import { axiosClient, axiosInternalClient } from './axios-config';
+import { axiosClient, axiosInternalClient } from './axios-config'
 
-export const api = axiosClient();
-export const internalApi = axiosInternalClient();
+export const api = axiosClient()
+export const internalApi = axiosInternalClient()

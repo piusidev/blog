@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Card = styled.div`
   width: 100%;
@@ -28,10 +28,10 @@ export const Card = styled.div`
     font-weight: 400;
     font-size: 1.5rem;
   }
-`;
+`
 
 export const Categories = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.7rem;
-`;
+`
